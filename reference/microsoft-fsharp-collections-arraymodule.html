@@ -1,0 +1,1574 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>ArrayModule - GraphQL.net</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content=""/>
+    <meta name="author" content="Kevin Thompson"/>
+
+    <script src="https://code.jquery.com/jquery-1.8.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.8.23/jquery-ui.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/js/bootstrap.min.js"></script>
+    <link href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/css/bootstrap-combined.min.css" rel="stylesheet"/>
+
+    <link type="text/css" rel="stylesheet" href="/GraphQL.net/content/style.css" />
+    <script type="text/javascript" src="/GraphQL.net/content/tips.js"></script>
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container">
+      <div class="masthead">
+        <ul class="nav nav-pills pull-right">
+          <li><a href="http://fsharp.org">fsharp.org</a></li>
+          <li><a href="http://github.com/kthompson/GraphQL.net">github page</a></li>
+        </ul>
+        <h3 class="muted"><a href="/GraphQL.net/index.html">GraphQL.net</a></h3>
+      </div>
+      <hr />
+      <div class="row">
+        <div class="span9" id="main">
+          
+
+
+
+<h1>ArrayModule</h1>
+<p>
+  <span>Namespace: Microsoft.FSharp.Collections</span><br />
+</p>
+<div class="xmldoc">
+</div>
+  <h3>Static members</h3>
+  <table class="table table-bordered member-list">
+    <thead>
+      <tr><td>Static member</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '619', 619)" onmouseover="showTip(event, '619', 619)">
+            Append(array1, array2)
+          </code>
+          <div class="tip" id="619">
+            <strong>Signature:</strong> (array1:&#39;T [] * array2:&#39;T []) -&gt; &#39;T []<br />
+                          <strong>Type parameters:</strong> 'T          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '620', 620)" onmouseover="showTip(event, '620', 620)">
+            Average(array)
+          </code>
+          <div class="tip" id="620">
+            <strong>Signature:</strong> (array:&#39;T []) -&gt; &#39;T<br />
+                          <strong>Type parameters:</strong> 'T          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '621', 621)" onmouseover="showTip(event, '621', 621)">
+            AverageBy(projection, array)
+          </code>
+          <div class="tip" id="621">
+            <strong>Signature:</strong> (projection:FSharpFunc&lt;&#39;T,&#39;TResult&gt; * array:&#39;T []) -&gt; &#39;TResult<br />
+                          <strong>Type parameters:</strong> 'T, 'TResult          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '622', 622)" onmouseover="showTip(event, '622', 622)">
+            Choose(chooser, array)
+          </code>
+          <div class="tip" id="622">
+            <strong>Signature:</strong> (chooser:FSharpFunc&lt;&#39;T,FSharpOption&lt;&#39;TResult&gt;&gt; * array:&#39;T []) -&gt; &#39;TResult []<br />
+                          <strong>Type parameters:</strong> 'T, 'TResult          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '623', 623)" onmouseover="showTip(event, '623', 623)">
+            ChunkBySize(chunkSize, array)
+          </code>
+          <div class="tip" id="623">
+            <strong>Signature:</strong> (chunkSize:int * array:&#39;T []) -&gt; &#39;T [] []<br />
+                          <strong>Type parameters:</strong> 'T          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '624', 624)" onmouseover="showTip(event, '624', 624)">
+            Collect(mapping, array)
+          </code>
+          <div class="tip" id="624">
+            <strong>Signature:</strong> (mapping:FSharpFunc&lt;&#39;T,&#39;TResult []&gt; * array:&#39;T []) -&gt; &#39;TResult []<br />
+                          <strong>Type parameters:</strong> 'T, 'TResult          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '625', 625)" onmouseover="showTip(event, '625', 625)">
+            CompareWith(comparer, array1, array2)
+          </code>
+          <div class="tip" id="625">
+            <strong>Signature:</strong> (comparer:FSharpFunc&lt;&#39;T,FSharpFunc&lt;&#39;T,int&gt;&gt; * array1:&#39;T [] * array2:&#39;T []) -&gt; int<br />
+                          <strong>Type parameters:</strong> 'T          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '626', 626)" onmouseover="showTip(event, '626', 626)">
+            Concat(arrays)
+          </code>
+          <div class="tip" id="626">
+            <strong>Signature:</strong> (arrays:IEnumerable&lt;&#39;T []&gt;) -&gt; &#39;T []<br />
+                          <strong>Type parameters:</strong> 'T          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '627', 627)" onmouseover="showTip(event, '627', 627)">
+            Contains(value, array)
+          </code>
+          <div class="tip" id="627">
+            <strong>Signature:</strong> (value:&#39;T * array:&#39;T []) -&gt; bool<br />
+                          <strong>Type parameters:</strong> 'T          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '628', 628)" onmouseover="showTip(event, '628', 628)">
+            Copy(array)
+          </code>
+          <div class="tip" id="628">
+            <strong>Signature:</strong> (array:&#39;T []) -&gt; &#39;T []<br />
+                          <strong>Type parameters:</strong> 'T          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '629', 629)" onmouseover="showTip(event, '629', 629)">
+            CopyTo(...)
+          </code>
+          <div class="tip" id="629">
+            <strong>Signature:</strong> (source:&#39;T [] * sourceIndex:int * target:&#39;T [] * targetIndex:int * count:int) -&gt; unit<br />
+                          <strong>Type parameters:</strong> 'T          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '630', 630)" onmouseover="showTip(event, '630', 630)">
+            CountBy(projection, array)
+          </code>
+          <div class="tip" id="630">
+            <strong>Signature:</strong> (projection:FSharpFunc&lt;&#39;T,&#39;TKey&gt; * array:&#39;T []) -&gt; (&#39;TKey * int) []<br />
+                          <strong>Type parameters:</strong> 'T, 'TKey          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '631', 631)" onmouseover="showTip(event, '631', 631)">
+            Create(count, value)
+          </code>
+          <div class="tip" id="631">
+            <strong>Signature:</strong> (count:int * value:&#39;T) -&gt; &#39;T []<br />
+                          <strong>Type parameters:</strong> 'T          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '632', 632)" onmouseover="showTip(event, '632', 632)">
+            Distinct(array)
+          </code>
+          <div class="tip" id="632">
+            <strong>Signature:</strong> (array:&#39;T []) -&gt; &#39;T []<br />
+                          <strong>Type parameters:</strong> 'T          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '633', 633)" onmouseover="showTip(event, '633', 633)">
+            DistinctBy(projection, array)
+          </code>
+          <div class="tip" id="633">
+            <strong>Signature:</strong> (projection:FSharpFunc&lt;&#39;T,&#39;TKey&gt; * array:&#39;T []) -&gt; &#39;T []<br />
+                          <strong>Type parameters:</strong> 'T, 'TKey          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '634', 634)" onmouseover="showTip(event, '634', 634)">
+            Empty()
+          </code>
+          <div class="tip" id="634">
+            <strong>Signature:</strong> unit -&gt; &#39;T []<br />
+                          <strong>Type parameters:</strong> 'T          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '635', 635)" onmouseover="showTip(event, '635', 635)">
+            ExactlyOne(array)
+          </code>
+          <div class="tip" id="635">
+            <strong>Signature:</strong> (array:&#39;T []) -&gt; &#39;T<br />
+                          <strong>Type parameters:</strong> 'T          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '636', 636)" onmouseover="showTip(event, '636', 636)">
+            Except(itemsToExclude, array)
+          </code>
+          <div class="tip" id="636">
+            <strong>Signature:</strong> (itemsToExclude:IEnumerable&lt;&#39;T&gt; * array:&#39;T []) -&gt; &#39;T []<br />
+                          <strong>Type parameters:</strong> 'T          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '637', 637)" onmouseover="showTip(event, '637', 637)">
+            Exists(predicate, array)
+          </code>
+          <div class="tip" id="637">
+            <strong>Signature:</strong> (predicate:FSharpFunc&lt;&#39;T,bool&gt; * array:&#39;T []) -&gt; bool<br />
+                          <strong>Type parameters:</strong> 'T          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '638', 638)" onmouseover="showTip(event, '638', 638)">
+            Exists2(predicate, array1, array2)
+          </code>
+          <div class="tip" id="638">
+            <strong>Signature:</strong> (predicate:FSharpFunc&lt;&#39;T1,FSharpFunc&lt;&#39;T2,bool&gt;&gt; * array1:&#39;T1 [] * array2:&#39;T2 []) -&gt; bool<br />
+                          <strong>Type parameters:</strong> 'T1, 'T2          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '639', 639)" onmouseover="showTip(event, '639', 639)">
+            Fill(target, targetIndex, count, value)
+          </code>
+          <div class="tip" id="639">
+            <strong>Signature:</strong> (target:&#39;T [] * targetIndex:int * count:int * value:&#39;T) -&gt; unit<br />
+                          <strong>Type parameters:</strong> 'T          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '640', 640)" onmouseover="showTip(event, '640', 640)">
+            Filter(predicate, array)
+          </code>
+          <div class="tip" id="640">
+            <strong>Signature:</strong> (predicate:FSharpFunc&lt;&#39;T,bool&gt; * array:&#39;T []) -&gt; &#39;T []<br />
+                          <strong>Type parameters:</strong> 'T          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '641', 641)" onmouseover="showTip(event, '641', 641)">
+            Find(predicate, array)
+          </code>
+          <div class="tip" id="641">
+            <strong>Signature:</strong> (predicate:FSharpFunc&lt;&#39;T,bool&gt; * array:&#39;T []) -&gt; &#39;T<br />
+                          <strong>Type parameters:</strong> 'T          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '642', 642)" onmouseover="showTip(event, '642', 642)">
+            FindBack(predicate, array)
+          </code>
+          <div class="tip" id="642">
+            <strong>Signature:</strong> (predicate:FSharpFunc&lt;&#39;T,bool&gt; * array:&#39;T []) -&gt; &#39;T<br />
+                          <strong>Type parameters:</strong> 'T          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '643', 643)" onmouseover="showTip(event, '643', 643)">
+            FindIndex(predicate, array)
+          </code>
+          <div class="tip" id="643">
+            <strong>Signature:</strong> (predicate:FSharpFunc&lt;&#39;T,bool&gt; * array:&#39;T []) -&gt; int<br />
+                          <strong>Type parameters:</strong> 'T          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '644', 644)" onmouseover="showTip(event, '644', 644)">
+            FindIndexBack(predicate, array)
+          </code>
+          <div class="tip" id="644">
+            <strong>Signature:</strong> (predicate:FSharpFunc&lt;&#39;T,bool&gt; * array:&#39;T []) -&gt; int<br />
+                          <strong>Type parameters:</strong> 'T          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '645', 645)" onmouseover="showTip(event, '645', 645)">
+            Fold(folder, state, array)
+          </code>
+          <div class="tip" id="645">
+            <strong>Signature:</strong> (folder:FSharpFunc&lt;&#39;TState,FSharpFunc&lt;&#39;T,&#39;TState&gt;&gt; * state:&#39;TState * array:&#39;T []) -&gt; &#39;TState<br />
+                          <strong>Type parameters:</strong> 'T, 'TState          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '646', 646)" onmouseover="showTip(event, '646', 646)">
+            Fold2(folder, state, array1, array2)
+          </code>
+          <div class="tip" id="646">
+            <strong>Signature:</strong> (folder:FSharpFunc&lt;&#39;TState,FSharpFunc&lt;&#39;T1,FSharpFunc&lt;&#39;T2,&#39;TState&gt;&gt;&gt; * state:&#39;TState * array1:&#39;T1 [] * array2:&#39;T2 []) -&gt; &#39;TState<br />
+                          <strong>Type parameters:</strong> 'T1, 'T2, 'TState          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '647', 647)" onmouseover="showTip(event, '647', 647)">
+            FoldBack(folder, array, state)
+          </code>
+          <div class="tip" id="647">
+            <strong>Signature:</strong> (folder:FSharpFunc&lt;&#39;T,FSharpFunc&lt;&#39;TState,&#39;TState&gt;&gt; * array:&#39;T [] * state:&#39;TState) -&gt; &#39;TState<br />
+                          <strong>Type parameters:</strong> 'T, 'TState          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '648', 648)" onmouseover="showTip(event, '648', 648)">
+            FoldBack2(folder, array1, array2, state)
+          </code>
+          <div class="tip" id="648">
+            <strong>Signature:</strong> (folder:FSharpFunc&lt;&#39;T1,FSharpFunc&lt;&#39;T2,FSharpFunc&lt;&#39;TState,&#39;TState&gt;&gt;&gt; * array1:&#39;T1 [] * array2:&#39;T2 [] * state:&#39;TState) -&gt; &#39;TState<br />
+                          <strong>Type parameters:</strong> 'T1, 'T2, 'TState          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '649', 649)" onmouseover="showTip(event, '649', 649)">
+            ForAll(predicate, array)
+          </code>
+          <div class="tip" id="649">
+            <strong>Signature:</strong> (predicate:FSharpFunc&lt;&#39;T,bool&gt; * array:&#39;T []) -&gt; bool<br />
+                          <strong>Type parameters:</strong> 'T          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '650', 650)" onmouseover="showTip(event, '650', 650)">
+            ForAll2(predicate, array1, array2)
+          </code>
+          <div class="tip" id="650">
+            <strong>Signature:</strong> (predicate:FSharpFunc&lt;&#39;T1,FSharpFunc&lt;&#39;T2,bool&gt;&gt; * array1:&#39;T1 [] * array2:&#39;T2 []) -&gt; bool<br />
+                          <strong>Type parameters:</strong> 'T1, 'T2          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '651', 651)" onmouseover="showTip(event, '651', 651)">
+            Get(array, index)
+          </code>
+          <div class="tip" id="651">
+            <strong>Signature:</strong> (array:&#39;T [] * index:int) -&gt; &#39;T<br />
+                          <strong>Type parameters:</strong> 'T          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '652', 652)" onmouseover="showTip(event, '652', 652)">
+            GetSubArray(array, startIndex, count)
+          </code>
+          <div class="tip" id="652">
+            <strong>Signature:</strong> (array:&#39;T [] * startIndex:int * count:int) -&gt; &#39;T []<br />
+                          <strong>Type parameters:</strong> 'T          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '653', 653)" onmouseover="showTip(event, '653', 653)">
+            GroupBy(projection, array)
+          </code>
+          <div class="tip" id="653">
+            <strong>Signature:</strong> (projection:FSharpFunc&lt;&#39;T,&#39;TKey&gt; * array:&#39;T []) -&gt; (&#39;TKey * &#39;T []) []<br />
+                          <strong>Type parameters:</strong> 'T, 'TKey          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '654', 654)" onmouseover="showTip(event, '654', 654)">
+            Head(array)
+          </code>
+          <div class="tip" id="654">
+            <strong>Signature:</strong> (array:&#39;T []) -&gt; &#39;T<br />
+                          <strong>Type parameters:</strong> 'T          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '655', 655)" onmouseover="showTip(event, '655', 655)">
+            Indexed(array)
+          </code>
+          <div class="tip" id="655">
+            <strong>Signature:</strong> (array:&#39;T []) -&gt; (int * &#39;T) []<br />
+                          <strong>Type parameters:</strong> 'T          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '656', 656)" onmouseover="showTip(event, '656', 656)">
+            Initialize(count, initializer)
+          </code>
+          <div class="tip" id="656">
+            <strong>Signature:</strong> (count:int * initializer:FSharpFunc&lt;int,&#39;T&gt;) -&gt; &#39;T []<br />
+                          <strong>Type parameters:</strong> 'T          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '657', 657)" onmouseover="showTip(event, '657', 657)">
+            IsEmpty(array)
+          </code>
+          <div class="tip" id="657">
+            <strong>Signature:</strong> (array:&#39;T []) -&gt; bool<br />
+                          <strong>Type parameters:</strong> 'T          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '658', 658)" onmouseover="showTip(event, '658', 658)">
+            Item(index, array)
+          </code>
+          <div class="tip" id="658">
+            <strong>Signature:</strong> (index:int * array:&#39;T []) -&gt; &#39;T<br />
+                          <strong>Type parameters:</strong> 'T          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '659', 659)" onmouseover="showTip(event, '659', 659)">
+            Iterate(action, array)
+          </code>
+          <div class="tip" id="659">
+            <strong>Signature:</strong> (action:FSharpFunc&lt;&#39;T,Unit&gt; * array:&#39;T []) -&gt; unit<br />
+                          <strong>Type parameters:</strong> 'T          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '660', 660)" onmouseover="showTip(event, '660', 660)">
+            Iterate2(action, array1, array2)
+          </code>
+          <div class="tip" id="660">
+            <strong>Signature:</strong> (action:FSharpFunc&lt;&#39;T1,FSharpFunc&lt;&#39;T2,Unit&gt;&gt; * array1:&#39;T1 [] * array2:&#39;T2 []) -&gt; unit<br />
+                          <strong>Type parameters:</strong> 'T1, 'T2          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '661', 661)" onmouseover="showTip(event, '661', 661)">
+            IterateIndexed(action, array)
+          </code>
+          <div class="tip" id="661">
+            <strong>Signature:</strong> (action:FSharpFunc&lt;int,FSharpFunc&lt;&#39;T,Unit&gt;&gt; * array:&#39;T []) -&gt; unit<br />
+                          <strong>Type parameters:</strong> 'T          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '662', 662)" onmouseover="showTip(event, '662', 662)">
+            IterateIndexed2(action, array1, array2)
+          </code>
+          <div class="tip" id="662">
+            <strong>Signature:</strong> (action:FSharpFunc&lt;int,FSharpFunc&lt;&#39;T1,FSharpFunc&lt;&#39;T2,Unit&gt;&gt;&gt; * array1:&#39;T1 [] * array2:&#39;T2 []) -&gt; unit<br />
+                          <strong>Type parameters:</strong> 'T1, 'T2          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '663', 663)" onmouseover="showTip(event, '663', 663)">
+            Last(array)
+          </code>
+          <div class="tip" id="663">
+            <strong>Signature:</strong> (array:&#39;T []) -&gt; &#39;T<br />
+                          <strong>Type parameters:</strong> 'T          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '664', 664)" onmouseover="showTip(event, '664', 664)">
+            Length(array)
+          </code>
+          <div class="tip" id="664">
+            <strong>Signature:</strong> (array:&#39;T []) -&gt; int<br />
+                          <strong>Type parameters:</strong> 'T          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '665', 665)" onmouseover="showTip(event, '665', 665)">
+            Map(mapping, array)
+          </code>
+          <div class="tip" id="665">
+            <strong>Signature:</strong> (mapping:FSharpFunc&lt;&#39;T,&#39;TResult&gt; * array:&#39;T []) -&gt; &#39;TResult []<br />
+                          <strong>Type parameters:</strong> 'T, 'TResult          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '666', 666)" onmouseover="showTip(event, '666', 666)">
+            Map2(mapping, array1, array2)
+          </code>
+          <div class="tip" id="666">
+            <strong>Signature:</strong> (mapping:FSharpFunc&lt;&#39;T1,FSharpFunc&lt;&#39;T2,&#39;TResult&gt;&gt; * array1:&#39;T1 [] * array2:&#39;T2 []) -&gt; &#39;TResult []<br />
+                          <strong>Type parameters:</strong> 'T1, 'T2, 'TResult          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '667', 667)" onmouseover="showTip(event, '667', 667)">
+            Map3(mapping, array1, array2, array3)
+          </code>
+          <div class="tip" id="667">
+            <strong>Signature:</strong> (mapping:FSharpFunc&lt;&#39;T1,FSharpFunc&lt;&#39;T2,FSharpFunc&lt;&#39;T3,&#39;TResult&gt;&gt;&gt; * array1:&#39;T1 [] * array2:&#39;T2 [] * array3:&#39;T3 []) -&gt; &#39;TResult []<br />
+                          <strong>Type parameters:</strong> 'T1, 'T2, 'T3, 'TResult          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '668', 668)" onmouseover="showTip(event, '668', 668)">
+            MapFold(mapping, state, array)
+          </code>
+          <div class="tip" id="668">
+            <strong>Signature:</strong> (mapping:FSharpFunc&lt;&#39;TState,FSharpFunc&lt;&#39;T,(&#39;TResult * &#39;TState)&gt;&gt; * state:&#39;TState * array:&#39;T []) -&gt; &#39;TResult [] * &#39;TState<br />
+                          <strong>Type parameters:</strong> 'T, 'TState, 'TResult          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '669', 669)" onmouseover="showTip(event, '669', 669)">
+            MapFoldBack(mapping, array, state)
+          </code>
+          <div class="tip" id="669">
+            <strong>Signature:</strong> (mapping:FSharpFunc&lt;&#39;T,FSharpFunc&lt;&#39;TState,(&#39;TResult * &#39;TState)&gt;&gt; * array:&#39;T [] * state:&#39;TState) -&gt; &#39;TResult [] * &#39;TState<br />
+                          <strong>Type parameters:</strong> 'T, 'TState, 'TResult          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '670', 670)" onmouseover="showTip(event, '670', 670)">
+            MapIndexed(mapping, array)
+          </code>
+          <div class="tip" id="670">
+            <strong>Signature:</strong> (mapping:FSharpFunc&lt;int,FSharpFunc&lt;&#39;T,&#39;TResult&gt;&gt; * array:&#39;T []) -&gt; &#39;TResult []<br />
+                          <strong>Type parameters:</strong> 'T, 'TResult          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '671', 671)" onmouseover="showTip(event, '671', 671)">
+            MapIndexed2(mapping, array1, array2)
+          </code>
+          <div class="tip" id="671">
+            <strong>Signature:</strong> (mapping:FSharpFunc&lt;int,FSharpFunc&lt;&#39;T1,FSharpFunc&lt;&#39;T2,&#39;TResult&gt;&gt;&gt; * array1:&#39;T1 [] * array2:&#39;T2 []) -&gt; &#39;TResult []<br />
+                          <strong>Type parameters:</strong> 'T1, 'T2, 'TResult          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '672', 672)" onmouseover="showTip(event, '672', 672)">
+            Max(array)
+          </code>
+          <div class="tip" id="672">
+            <strong>Signature:</strong> (array:&#39;T []) -&gt; &#39;T<br />
+                          <strong>Type parameters:</strong> 'T          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '673', 673)" onmouseover="showTip(event, '673', 673)">
+            MaxBy(projection, array)
+          </code>
+          <div class="tip" id="673">
+            <strong>Signature:</strong> (projection:FSharpFunc&lt;&#39;T,&#39;TResult&gt; * array:&#39;T []) -&gt; &#39;T<br />
+                          <strong>Type parameters:</strong> 'T, 'TResult          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '674', 674)" onmouseover="showTip(event, '674', 674)">
+            Min(array)
+          </code>
+          <div class="tip" id="674">
+            <strong>Signature:</strong> (array:&#39;T []) -&gt; &#39;T<br />
+                          <strong>Type parameters:</strong> 'T          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '675', 675)" onmouseover="showTip(event, '675', 675)">
+            MinBy(projection, array)
+          </code>
+          <div class="tip" id="675">
+            <strong>Signature:</strong> (projection:FSharpFunc&lt;&#39;T,&#39;TResult&gt; * array:&#39;T []) -&gt; &#39;T<br />
+                          <strong>Type parameters:</strong> 'T, 'TResult          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '676', 676)" onmouseover="showTip(event, '676', 676)">
+            OfList(list)
+          </code>
+          <div class="tip" id="676">
+            <strong>Signature:</strong> list:FSharpList&lt;&#39;T&gt; -&gt; &#39;T []<br />
+                          <strong>Type parameters:</strong> 'T          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '677', 677)" onmouseover="showTip(event, '677', 677)">
+            OfSeq(source)
+          </code>
+          <div class="tip" id="677">
+            <strong>Signature:</strong> source:IEnumerable&lt;&#39;T&gt; -&gt; &#39;T []<br />
+                          <strong>Type parameters:</strong> 'T          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '678', 678)" onmouseover="showTip(event, '678', 678)">
+            Pairwise(array)
+          </code>
+          <div class="tip" id="678">
+            <strong>Signature:</strong> (array:&#39;T []) -&gt; (&#39;T * &#39;T) []<br />
+                          <strong>Type parameters:</strong> 'T          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '679', 679)" onmouseover="showTip(event, '679', 679)">
+            Partition(predicate, array)
+          </code>
+          <div class="tip" id="679">
+            <strong>Signature:</strong> (predicate:FSharpFunc&lt;&#39;T,bool&gt; * array:&#39;T []) -&gt; &#39;T [] * &#39;T []<br />
+                          <strong>Type parameters:</strong> 'T          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '680', 680)" onmouseover="showTip(event, '680', 680)">
+            Permute(indexMap, array)
+          </code>
+          <div class="tip" id="680">
+            <strong>Signature:</strong> (indexMap:FSharpFunc&lt;int,int&gt; * array:&#39;T []) -&gt; &#39;T []<br />
+                          <strong>Type parameters:</strong> 'T          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '681', 681)" onmouseover="showTip(event, '681', 681)">
+            Pick(chooser, array)
+          </code>
+          <div class="tip" id="681">
+            <strong>Signature:</strong> (chooser:FSharpFunc&lt;&#39;T,FSharpOption&lt;&#39;TResult&gt;&gt; * array:&#39;T []) -&gt; &#39;TResult<br />
+                          <strong>Type parameters:</strong> 'T, 'TResult          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '682', 682)" onmouseover="showTip(event, '682', 682)">
+            Reduce(reduction, array)
+          </code>
+          <div class="tip" id="682">
+            <strong>Signature:</strong> (reduction:FSharpFunc&lt;&#39;T,FSharpFunc&lt;&#39;T,&#39;T&gt;&gt; * array:&#39;T []) -&gt; &#39;T<br />
+                          <strong>Type parameters:</strong> 'T          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '683', 683)" onmouseover="showTip(event, '683', 683)">
+            ReduceBack(reduction, array)
+          </code>
+          <div class="tip" id="683">
+            <strong>Signature:</strong> (reduction:FSharpFunc&lt;&#39;T,FSharpFunc&lt;&#39;T,&#39;T&gt;&gt; * array:&#39;T []) -&gt; &#39;T<br />
+                          <strong>Type parameters:</strong> 'T          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '684', 684)" onmouseover="showTip(event, '684', 684)">
+            Replicate(count, initial)
+          </code>
+          <div class="tip" id="684">
+            <strong>Signature:</strong> (count:int * initial:&#39;T) -&gt; &#39;T []<br />
+                          <strong>Type parameters:</strong> 'T          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '685', 685)" onmouseover="showTip(event, '685', 685)">
+            Reverse(array)
+          </code>
+          <div class="tip" id="685">
+            <strong>Signature:</strong> (array:&#39;T []) -&gt; &#39;T []<br />
+                          <strong>Type parameters:</strong> 'T          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '686', 686)" onmouseover="showTip(event, '686', 686)">
+            Scan(folder, state, array)
+          </code>
+          <div class="tip" id="686">
+            <strong>Signature:</strong> (folder:FSharpFunc&lt;&#39;TState,FSharpFunc&lt;&#39;T,&#39;TState&gt;&gt; * state:&#39;TState * array:&#39;T []) -&gt; &#39;TState []<br />
+                          <strong>Type parameters:</strong> 'T, 'TState          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '687', 687)" onmouseover="showTip(event, '687', 687)">
+            ScanBack(folder, array, state)
+          </code>
+          <div class="tip" id="687">
+            <strong>Signature:</strong> (folder:FSharpFunc&lt;&#39;T,FSharpFunc&lt;&#39;TState,&#39;TState&gt;&gt; * array:&#39;T [] * state:&#39;TState) -&gt; &#39;TState []<br />
+                          <strong>Type parameters:</strong> 'T, 'TState          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '688', 688)" onmouseover="showTip(event, '688', 688)">
+            Set(array, index, value)
+          </code>
+          <div class="tip" id="688">
+            <strong>Signature:</strong> (array:&#39;T [] * index:int * value:&#39;T) -&gt; unit<br />
+                          <strong>Type parameters:</strong> 'T          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '689', 689)" onmouseover="showTip(event, '689', 689)">
+            Singleton(value)
+          </code>
+          <div class="tip" id="689">
+            <strong>Signature:</strong> value:&#39;T -&gt; &#39;T []<br />
+                          <strong>Type parameters:</strong> 'T          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '690', 690)" onmouseover="showTip(event, '690', 690)">
+            Skip(count, array)
+          </code>
+          <div class="tip" id="690">
+            <strong>Signature:</strong> (count:int * array:&#39;T []) -&gt; &#39;T []<br />
+                          <strong>Type parameters:</strong> 'T          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '691', 691)" onmouseover="showTip(event, '691', 691)">
+            SkipWhile(predicate, array)
+          </code>
+          <div class="tip" id="691">
+            <strong>Signature:</strong> (predicate:FSharpFunc&lt;&#39;T,bool&gt; * array:&#39;T []) -&gt; &#39;T []<br />
+                          <strong>Type parameters:</strong> 'T          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '692', 692)" onmouseover="showTip(event, '692', 692)">
+            Sort(array)
+          </code>
+          <div class="tip" id="692">
+            <strong>Signature:</strong> (array:&#39;T []) -&gt; &#39;T []<br />
+                          <strong>Type parameters:</strong> 'T          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '693', 693)" onmouseover="showTip(event, '693', 693)">
+            SortBy(projection, array)
+          </code>
+          <div class="tip" id="693">
+            <strong>Signature:</strong> (projection:FSharpFunc&lt;&#39;T,&#39;TKey&gt; * array:&#39;T []) -&gt; &#39;T []<br />
+                          <strong>Type parameters:</strong> 'T, 'TKey          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '694', 694)" onmouseover="showTip(event, '694', 694)">
+            SortByDescending(projection, array)
+          </code>
+          <div class="tip" id="694">
+            <strong>Signature:</strong> (projection:FSharpFunc&lt;&#39;T,&#39;TKey&gt; * array:&#39;T []) -&gt; &#39;T []<br />
+                          <strong>Type parameters:</strong> 'T, 'TKey          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '695', 695)" onmouseover="showTip(event, '695', 695)">
+            SortDescending(array)
+          </code>
+          <div class="tip" id="695">
+            <strong>Signature:</strong> (array:&#39;T []) -&gt; &#39;T []<br />
+                          <strong>Type parameters:</strong> 'T          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '696', 696)" onmouseover="showTip(event, '696', 696)">
+            SortInPlace(array)
+          </code>
+          <div class="tip" id="696">
+            <strong>Signature:</strong> (array:&#39;T []) -&gt; unit<br />
+                          <strong>Type parameters:</strong> 'T          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '697', 697)" onmouseover="showTip(event, '697', 697)">
+            SortInPlaceBy(projection, array)
+          </code>
+          <div class="tip" id="697">
+            <strong>Signature:</strong> (projection:FSharpFunc&lt;&#39;T,&#39;TKey&gt; * array:&#39;T []) -&gt; unit<br />
+                          <strong>Type parameters:</strong> 'T, 'TKey          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '698', 698)" onmouseover="showTip(event, '698', 698)">
+            SortInPlaceWith(comparer, array)
+          </code>
+          <div class="tip" id="698">
+            <strong>Signature:</strong> (comparer:FSharpFunc&lt;&#39;T,FSharpFunc&lt;&#39;T,int&gt;&gt; * array:&#39;T []) -&gt; unit<br />
+                          <strong>Type parameters:</strong> 'T          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '699', 699)" onmouseover="showTip(event, '699', 699)">
+            SortWith(comparer, array)
+          </code>
+          <div class="tip" id="699">
+            <strong>Signature:</strong> (comparer:FSharpFunc&lt;&#39;T,FSharpFunc&lt;&#39;T,int&gt;&gt; * array:&#39;T []) -&gt; &#39;T []<br />
+                          <strong>Type parameters:</strong> 'T          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '700', 700)" onmouseover="showTip(event, '700', 700)">
+            SplitAt(index, array)
+          </code>
+          <div class="tip" id="700">
+            <strong>Signature:</strong> (index:int * array:&#39;T []) -&gt; &#39;T [] * &#39;T []<br />
+                          <strong>Type parameters:</strong> 'T          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '701', 701)" onmouseover="showTip(event, '701', 701)">
+            SplitInto(count, array)
+          </code>
+          <div class="tip" id="701">
+            <strong>Signature:</strong> (count:int * array:&#39;T []) -&gt; &#39;T [] []<br />
+                          <strong>Type parameters:</strong> 'T          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '702', 702)" onmouseover="showTip(event, '702', 702)">
+            Sum(array)
+          </code>
+          <div class="tip" id="702">
+            <strong>Signature:</strong> (array:&#39;T []) -&gt; &#39;T<br />
+                          <strong>Type parameters:</strong> 'T          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '703', 703)" onmouseover="showTip(event, '703', 703)">
+            SumBy(projection, array)
+          </code>
+          <div class="tip" id="703">
+            <strong>Signature:</strong> (projection:FSharpFunc&lt;&#39;T,&#39;TResult&gt; * array:&#39;T []) -&gt; &#39;TResult<br />
+                          <strong>Type parameters:</strong> 'T, 'TResult          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '704', 704)" onmouseover="showTip(event, '704', 704)">
+            Tail(array)
+          </code>
+          <div class="tip" id="704">
+            <strong>Signature:</strong> (array:&#39;T []) -&gt; &#39;T []<br />
+                          <strong>Type parameters:</strong> 'T          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '705', 705)" onmouseover="showTip(event, '705', 705)">
+            Take(count, array)
+          </code>
+          <div class="tip" id="705">
+            <strong>Signature:</strong> (count:int * array:&#39;T []) -&gt; &#39;T []<br />
+                          <strong>Type parameters:</strong> 'T          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '706', 706)" onmouseover="showTip(event, '706', 706)">
+            TakeWhile(predicate, array)
+          </code>
+          <div class="tip" id="706">
+            <strong>Signature:</strong> (predicate:FSharpFunc&lt;&#39;T,bool&gt; * array:&#39;T []) -&gt; &#39;T []<br />
+                          <strong>Type parameters:</strong> 'T          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '707', 707)" onmouseover="showTip(event, '707', 707)">
+            ToList(array)
+          </code>
+          <div class="tip" id="707">
+            <strong>Signature:</strong> (array:&#39;T []) -&gt; FSharpList&lt;&#39;T&gt;<br />
+                          <strong>Type parameters:</strong> 'T          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '708', 708)" onmouseover="showTip(event, '708', 708)">
+            ToSeq(array)
+          </code>
+          <div class="tip" id="708">
+            <strong>Signature:</strong> (array:&#39;T []) -&gt; IEnumerable&lt;&#39;T&gt;<br />
+                          <strong>Type parameters:</strong> 'T          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '709', 709)" onmouseover="showTip(event, '709', 709)">
+            Truncate(count, array)
+          </code>
+          <div class="tip" id="709">
+            <strong>Signature:</strong> (count:int * array:&#39;T []) -&gt; &#39;T []<br />
+                          <strong>Type parameters:</strong> 'T          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '710', 710)" onmouseover="showTip(event, '710', 710)">
+            TryFind(predicate, array)
+          </code>
+          <div class="tip" id="710">
+            <strong>Signature:</strong> (predicate:FSharpFunc&lt;&#39;T,bool&gt; * array:&#39;T []) -&gt; FSharpOption&lt;&#39;T&gt;<br />
+                          <strong>Type parameters:</strong> 'T          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '711', 711)" onmouseover="showTip(event, '711', 711)">
+            TryFindBack(predicate, array)
+          </code>
+          <div class="tip" id="711">
+            <strong>Signature:</strong> (predicate:FSharpFunc&lt;&#39;T,bool&gt; * array:&#39;T []) -&gt; FSharpOption&lt;&#39;T&gt;<br />
+                          <strong>Type parameters:</strong> 'T          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '712', 712)" onmouseover="showTip(event, '712', 712)">
+            TryFindIndex(predicate, array)
+          </code>
+          <div class="tip" id="712">
+            <strong>Signature:</strong> (predicate:FSharpFunc&lt;&#39;T,bool&gt; * array:&#39;T []) -&gt; FSharpOption&lt;int&gt;<br />
+                          <strong>Type parameters:</strong> 'T          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '713', 713)" onmouseover="showTip(event, '713', 713)">
+            TryFindIndexBack(predicate, array)
+          </code>
+          <div class="tip" id="713">
+            <strong>Signature:</strong> (predicate:FSharpFunc&lt;&#39;T,bool&gt; * array:&#39;T []) -&gt; FSharpOption&lt;int&gt;<br />
+                          <strong>Type parameters:</strong> 'T          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '714', 714)" onmouseover="showTip(event, '714', 714)">
+            TryHead(array)
+          </code>
+          <div class="tip" id="714">
+            <strong>Signature:</strong> (array:&#39;T []) -&gt; FSharpOption&lt;&#39;T&gt;<br />
+                          <strong>Type parameters:</strong> 'T          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '715', 715)" onmouseover="showTip(event, '715', 715)">
+            TryItem(index, array)
+          </code>
+          <div class="tip" id="715">
+            <strong>Signature:</strong> (index:int * array:&#39;T []) -&gt; FSharpOption&lt;&#39;T&gt;<br />
+                          <strong>Type parameters:</strong> 'T          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '716', 716)" onmouseover="showTip(event, '716', 716)">
+            TryLast(array)
+          </code>
+          <div class="tip" id="716">
+            <strong>Signature:</strong> (array:&#39;T []) -&gt; FSharpOption&lt;&#39;T&gt;<br />
+                          <strong>Type parameters:</strong> 'T          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '717', 717)" onmouseover="showTip(event, '717', 717)">
+            TryPick(chooser, array)
+          </code>
+          <div class="tip" id="717">
+            <strong>Signature:</strong> (chooser:FSharpFunc&lt;&#39;T,FSharpOption&lt;&#39;TResult&gt;&gt; * array:&#39;T []) -&gt; FSharpOption&lt;&#39;TResult&gt;<br />
+                          <strong>Type parameters:</strong> 'T, 'TResult          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '718', 718)" onmouseover="showTip(event, '718', 718)">
+            Unfold(generator, state)
+          </code>
+          <div class="tip" id="718">
+            <strong>Signature:</strong> (generator:FSharpFunc&lt;&#39;TState,FSharpOption&lt;&#39;T * &#39;TState&gt;&gt; * state:&#39;TState) -&gt; &#39;T []<br />
+                          <strong>Type parameters:</strong> 'T, 'TState          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '719', 719)" onmouseover="showTip(event, '719', 719)">
+            Unzip(array)
+          </code>
+          <div class="tip" id="719">
+            <strong>Signature:</strong> (array:(&#39;T1 * &#39;T2) []) -&gt; &#39;T1 [] * &#39;T2 []<br />
+                          <strong>Type parameters:</strong> 'T1, 'T2          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '720', 720)" onmouseover="showTip(event, '720', 720)">
+            Unzip3(array)
+          </code>
+          <div class="tip" id="720">
+            <strong>Signature:</strong> (array:(&#39;T1 * &#39;T2 * &#39;T3) []) -&gt; &#39;T1 [] * &#39;T2 [] * &#39;T3 []<br />
+                          <strong>Type parameters:</strong> 'T1, 'T2, 'T3          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '721', 721)" onmouseover="showTip(event, '721', 721)">
+            Where(predicate, array)
+          </code>
+          <div class="tip" id="721">
+            <strong>Signature:</strong> (predicate:FSharpFunc&lt;&#39;T,bool&gt; * array:&#39;T []) -&gt; &#39;T []<br />
+                          <strong>Type parameters:</strong> 'T          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '722', 722)" onmouseover="showTip(event, '722', 722)">
+            Windowed(windowSize, array)
+          </code>
+          <div class="tip" id="722">
+            <strong>Signature:</strong> (windowSize:int * array:&#39;T []) -&gt; &#39;T [] []<br />
+                          <strong>Type parameters:</strong> 'T          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '723', 723)" onmouseover="showTip(event, '723', 723)">
+            ZeroCreate(count)
+          </code>
+          <div class="tip" id="723">
+            <strong>Signature:</strong> count:int -&gt; &#39;T []<br />
+                          <strong>Type parameters:</strong> 'T          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '724', 724)" onmouseover="showTip(event, '724', 724)">
+            Zip(array1, array2)
+          </code>
+          <div class="tip" id="724">
+            <strong>Signature:</strong> (array1:&#39;T1 [] * array2:&#39;T2 []) -&gt; (&#39;T1 * &#39;T2) []<br />
+                          <strong>Type parameters:</strong> 'T1, 'T2          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '725', 725)" onmouseover="showTip(event, '725', 725)">
+            Zip3(array1, array2, array3)
+          </code>
+          <div class="tip" id="725">
+            <strong>Signature:</strong> (array1:&#39;T1 [] * array2:&#39;T2 [] * array3:&#39;T3 []) -&gt; (&#39;T1 * &#39;T2 * &#39;T3) []<br />
+                          <strong>Type parameters:</strong> 'T1, 'T2, 'T3          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+        </div>
+        <div class="span3">
+          <img src="/GraphQL.net/img/logo.png" alt="F# Project" style="width:150px;margin:10px" />  
+          <ul class="nav nav-list" id="menu" style="margin-top: 20px;">
+            <li class="nav-header">GraphQL.net</li>
+            <li><a href="/GraphQL.net/index.html">Home page</a></li>
+            <li class="divider"></li>
+            <li><a href="http://nuget.org/packages/GraphQL.net">Get Library via NuGet</a></li>
+            <li><a href="http://github.com/kthompson/GraphQL.net">Source Code on GitHub</a></li>
+            <li><a href="/GraphQL.net/license.html">License</a></li>
+            <li><a href="/GraphQL.net/release-notes.html">Release Notes</a></li>
+            
+            <li class="nav-header">Getting started</li>
+            <li><a href="/GraphQL.net/tutorial.html">Sample tutorial</a></li>
+
+            <li class="nav-header">Documentation</li>
+            <li><a href="/GraphQL.net/reference/index.html">API Reference</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <a href="http://github.com/kthompson/GraphQL.net"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"/></a>
+  </body>
+  </html>

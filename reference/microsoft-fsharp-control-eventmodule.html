@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>EventModule - GraphQL.net</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content=""/>
+    <meta name="author" content="Kevin Thompson"/>
+
+    <script src="https://code.jquery.com/jquery-1.8.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.8.23/jquery-ui.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/js/bootstrap.min.js"></script>
+    <link href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/css/bootstrap-combined.min.css" rel="stylesheet"/>
+
+    <link type="text/css" rel="stylesheet" href="/GraphQL.net/content/style.css" />
+    <script type="text/javascript" src="/GraphQL.net/content/tips.js"></script>
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container">
+      <div class="masthead">
+        <ul class="nav nav-pills pull-right">
+          <li><a href="http://fsharp.org">fsharp.org</a></li>
+          <li><a href="http://github.com/kthompson/GraphQL.net">github page</a></li>
+        </ul>
+        <h3 class="muted"><a href="/GraphQL.net/index.html">GraphQL.net</a></h3>
+      </div>
+      <hr />
+      <div class="row">
+        <div class="span9" id="main">
+          
+
+
+
+<h1>EventModule</h1>
+<p>
+  <span>Namespace: Microsoft.FSharp.Control</span><br />
+</p>
+<div class="xmldoc">
+</div>
+  <h3>Static members</h3>
+  <table class="table table-bordered member-list">
+    <thead>
+      <tr><td>Static member</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '1040', 1040)" onmouseover="showTip(event, '1040', 1040)">
+            Add(callback, sourceEvent)
+          </code>
+          <div class="tip" id="1040">
+            <strong>Signature:</strong> (callback:FSharpFunc&lt;&#39;T,Unit&gt; * sourceEvent:IEvent&lt;&#39;TDel,&#39;T&gt;) -&gt; unit<br />
+                          <strong>Type parameters:</strong> 'T, 'TDel          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '1041', 1041)" onmouseover="showTip(event, '1041', 1041)">
+            Choose(chooser, sourceEvent)
+          </code>
+          <div class="tip" id="1041">
+            <strong>Signature:</strong> (chooser:FSharpFunc&lt;&#39;T,FSharpOption&lt;&#39;TResult&gt;&gt; * sourceEvent:IEvent&lt;&#39;TDel,&#39;T&gt;) -&gt; IEvent&lt;FSharpHandler&lt;&#39;TResult&gt;,&#39;TResult&gt;<br />
+                          <strong>Type parameters:</strong> 'T, 'TResult, 'TDel          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '1042', 1042)" onmouseover="showTip(event, '1042', 1042)">
+            Filter(predicate, sourceEvent)
+          </code>
+          <div class="tip" id="1042">
+            <strong>Signature:</strong> (predicate:FSharpFunc&lt;&#39;T,bool&gt; * sourceEvent:IEvent&lt;&#39;TDel,&#39;T&gt;) -&gt; IEvent&lt;FSharpHandler&lt;&#39;T&gt;,&#39;T&gt;<br />
+                          <strong>Type parameters:</strong> 'T, 'TDel          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '1043', 1043)" onmouseover="showTip(event, '1043', 1043)">
+            Map(mapping, sourceEvent)
+          </code>
+          <div class="tip" id="1043">
+            <strong>Signature:</strong> (mapping:FSharpFunc&lt;&#39;T,&#39;TResult&gt; * sourceEvent:IEvent&lt;&#39;TDel,&#39;T&gt;) -&gt; IEvent&lt;FSharpHandler&lt;&#39;TResult&gt;,&#39;TResult&gt;<br />
+                          <strong>Type parameters:</strong> 'T, 'TResult, 'TDel          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '1044', 1044)" onmouseover="showTip(event, '1044', 1044)">
+            Merge(event1, event2)
+          </code>
+          <div class="tip" id="1044">
+            <strong>Signature:</strong> (event1:IEvent&lt;&#39;TDel1,&#39;T&gt; * event2:IEvent&lt;&#39;TDel2,&#39;T&gt;) -&gt; IEvent&lt;FSharpHandler&lt;&#39;T&gt;,&#39;T&gt;<br />
+                          <strong>Type parameters:</strong> 'TDel1, 'T, 'TDel2          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '1045', 1045)" onmouseover="showTip(event, '1045', 1045)">
+            Pairwise(sourceEvent)
+          </code>
+          <div class="tip" id="1045">
+            <strong>Signature:</strong> sourceEvent:IEvent&lt;&#39;TDel,&#39;T&gt; -&gt; IEvent&lt;FSharpHandler&lt;&#39;T * &#39;T&gt;,(&#39;T * &#39;T)&gt;<br />
+                          <strong>Type parameters:</strong> 'TDel, 'T          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '1046', 1046)" onmouseover="showTip(event, '1046', 1046)">
+            Partition(predicate, sourceEvent)
+          </code>
+          <div class="tip" id="1046">
+            <strong>Signature:</strong> (predicate:FSharpFunc&lt;&#39;T,bool&gt; * sourceEvent:IEvent&lt;&#39;TDel,&#39;T&gt;) -&gt; IEvent&lt;FSharpHandler&lt;&#39;T&gt;,&#39;T&gt; * IEvent&lt;FSharpHandler&lt;&#39;T&gt;,&#39;T&gt;<br />
+                          <strong>Type parameters:</strong> 'T, 'TDel          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '1047', 1047)" onmouseover="showTip(event, '1047', 1047)">
+            Scan(collector, state, sourceEvent)
+          </code>
+          <div class="tip" id="1047">
+            <strong>Signature:</strong> (collector:FSharpFunc&lt;&#39;TResult,FSharpFunc&lt;&#39;T,&#39;TResult&gt;&gt; * state:&#39;TResult * sourceEvent:IEvent&lt;&#39;TDel,&#39;T&gt;) -&gt; IEvent&lt;FSharpHandler&lt;&#39;TResult&gt;,&#39;TResult&gt;<br />
+                          <strong>Type parameters:</strong> 'TResult, 'T, 'TDel          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '1048', 1048)" onmouseover="showTip(event, '1048', 1048)">
+            Split(splitter, sourceEvent)
+          </code>
+          <div class="tip" id="1048">
+            <strong>Signature:</strong> (splitter:FSharpFunc&lt;&#39;T,FSharpChoice&lt;&#39;TResult1,&#39;TResult2&gt;&gt; * sourceEvent:IEvent&lt;&#39;TDel,&#39;T&gt;) -&gt; IEvent&lt;FSharpHandler&lt;&#39;TResult1&gt;,&#39;TResult1&gt; * IEvent&lt;FSharpHandler&lt;&#39;TResult2&gt;,&#39;TResult2&gt;<br />
+                          <strong>Type parameters:</strong> 'T, 'TResult1, 'TResult2, 'TDel          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+        </div>
+        <div class="span3">
+          <img src="/GraphQL.net/img/logo.png" alt="F# Project" style="width:150px;margin:10px" />  
+          <ul class="nav nav-list" id="menu" style="margin-top: 20px;">
+            <li class="nav-header">GraphQL.net</li>
+            <li><a href="/GraphQL.net/index.html">Home page</a></li>
+            <li class="divider"></li>
+            <li><a href="http://nuget.org/packages/GraphQL.net">Get Library via NuGet</a></li>
+            <li><a href="http://github.com/kthompson/GraphQL.net">Source Code on GitHub</a></li>
+            <li><a href="/GraphQL.net/license.html">License</a></li>
+            <li><a href="/GraphQL.net/release-notes.html">Release Notes</a></li>
+            
+            <li class="nav-header">Getting started</li>
+            <li><a href="/GraphQL.net/tutorial.html">Sample tutorial</a></li>
+
+            <li class="nav-header">Documentation</li>
+            <li><a href="/GraphQL.net/reference/index.html">API Reference</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <a href="http://github.com/kthompson/GraphQL.net"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"/></a>
+  </body>
+  </html>

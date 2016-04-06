@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>Array3DModule - GraphQL.net</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content=""/>
+    <meta name="author" content="Kevin Thompson"/>
+
+    <script src="https://code.jquery.com/jquery-1.8.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.8.23/jquery-ui.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/js/bootstrap.min.js"></script>
+    <link href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/css/bootstrap-combined.min.css" rel="stylesheet"/>
+
+    <link type="text/css" rel="stylesheet" href="/GraphQL.net/content/style.css" />
+    <script type="text/javascript" src="/GraphQL.net/content/tips.js"></script>
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container">
+      <div class="masthead">
+        <ul class="nav nav-pills pull-right">
+          <li><a href="http://fsharp.org">fsharp.org</a></li>
+          <li><a href="http://github.com/kthompson/GraphQL.net">github page</a></li>
+        </ul>
+        <h3 class="muted"><a href="/GraphQL.net/index.html">GraphQL.net</a></h3>
+      </div>
+      <hr />
+      <div class="row">
+        <div class="span9" id="main">
+          
+
+
+
+<h1>Array3DModule</h1>
+<p>
+  <span>Namespace: Microsoft.FSharp.Collections</span><br />
+</p>
+<div class="xmldoc">
+</div>
+  <h3>Static members</h3>
+  <table class="table table-bordered member-list">
+    <thead>
+      <tr><td>Static member</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '598', 598)" onmouseover="showTip(event, '598', 598)">
+            Create(...)
+          </code>
+          <div class="tip" id="598">
+            <strong>Signature:</strong> (length1:int * length2:int * length3:int * initial:&#39;T) -&gt; &#39;T [,,]<br />
+                          <strong>Type parameters:</strong> 'T          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '599', 599)" onmouseover="showTip(event, '599', 599)">
+            Get(array, index1, index2, index3)
+          </code>
+          <div class="tip" id="599">
+            <strong>Signature:</strong> (array:&#39;T [,,] * index1:int * index2:int * index3:int) -&gt; &#39;T<br />
+                          <strong>Type parameters:</strong> 'T          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '600', 600)" onmouseover="showTip(event, '600', 600)">
+            Initialize(...)
+          </code>
+          <div class="tip" id="600">
+            <strong>Signature:</strong> (length1:int * length2:int * length3:int * initializer:FSharpFunc&lt;int,FSharpFunc&lt;int,FSharpFunc&lt;int,&#39;T&gt;&gt;&gt;) -&gt; &#39;T [,,]<br />
+                          <strong>Type parameters:</strong> 'T          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '601', 601)" onmouseover="showTip(event, '601', 601)">
+            Iterate(action, array)
+          </code>
+          <div class="tip" id="601">
+            <strong>Signature:</strong> (action:FSharpFunc&lt;&#39;T,Unit&gt; * array:&#39;T [,,]) -&gt; unit<br />
+                          <strong>Type parameters:</strong> 'T          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '602', 602)" onmouseover="showTip(event, '602', 602)">
+            IterateIndexed(action, array)
+          </code>
+          <div class="tip" id="602">
+            <strong>Signature:</strong> (action:FSharpFunc&lt;int,FSharpFunc&lt;int,FSharpFunc&lt;int,FSharpFunc&lt;&#39;T,Unit&gt;&gt;&gt;&gt; * array:&#39;T [,,]) -&gt; unit<br />
+                          <strong>Type parameters:</strong> 'T          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '603', 603)" onmouseover="showTip(event, '603', 603)">
+            Length1(array)
+          </code>
+          <div class="tip" id="603">
+            <strong>Signature:</strong> (array:&#39;T [,,]) -&gt; int<br />
+                          <strong>Type parameters:</strong> 'T          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '604', 604)" onmouseover="showTip(event, '604', 604)">
+            Length2(array)
+          </code>
+          <div class="tip" id="604">
+            <strong>Signature:</strong> (array:&#39;T [,,]) -&gt; int<br />
+                          <strong>Type parameters:</strong> 'T          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '605', 605)" onmouseover="showTip(event, '605', 605)">
+            Length3(array)
+          </code>
+          <div class="tip" id="605">
+            <strong>Signature:</strong> (array:&#39;T [,,]) -&gt; int<br />
+                          <strong>Type parameters:</strong> 'T          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '606', 606)" onmouseover="showTip(event, '606', 606)">
+            Map(mapping, array)
+          </code>
+          <div class="tip" id="606">
+            <strong>Signature:</strong> (mapping:FSharpFunc&lt;&#39;T,&#39;TResult&gt; * array:&#39;T [,,]) -&gt; &#39;TResult [,,]<br />
+                          <strong>Type parameters:</strong> 'T, 'TResult          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '607', 607)" onmouseover="showTip(event, '607', 607)">
+            MapIndexed(mapping, array)
+          </code>
+          <div class="tip" id="607">
+            <strong>Signature:</strong> (mapping:FSharpFunc&lt;int,FSharpFunc&lt;int,FSharpFunc&lt;int,FSharpFunc&lt;&#39;T,&#39;TResult&gt;&gt;&gt;&gt; * array:&#39;T [,,]) -&gt; &#39;TResult [,,]<br />
+                          <strong>Type parameters:</strong> 'T, 'TResult          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '608', 608)" onmouseover="showTip(event, '608', 608)">
+            Set(...)
+          </code>
+          <div class="tip" id="608">
+            <strong>Signature:</strong> (array:&#39;T [,,] * index1:int * index2:int * index3:int * value:&#39;T) -&gt; unit<br />
+                          <strong>Type parameters:</strong> 'T          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '609', 609)" onmouseover="showTip(event, '609', 609)">
+            ZeroCreate(length1, length2, length3)
+          </code>
+          <div class="tip" id="609">
+            <strong>Signature:</strong> (length1:int * length2:int * length3:int) -&gt; &#39;T [,,]<br />
+                          <strong>Type parameters:</strong> 'T          </div>
+        </td>
+        <td class="xmldoc">
+          
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+        </div>
+        <div class="span3">
+          <img src="/GraphQL.net/img/logo.png" alt="F# Project" style="width:150px;margin:10px" />  
+          <ul class="nav nav-list" id="menu" style="margin-top: 20px;">
+            <li class="nav-header">GraphQL.net</li>
+            <li><a href="/GraphQL.net/index.html">Home page</a></li>
+            <li class="divider"></li>
+            <li><a href="http://nuget.org/packages/GraphQL.net">Get Library via NuGet</a></li>
+            <li><a href="http://github.com/kthompson/GraphQL.net">Source Code on GitHub</a></li>
+            <li><a href="/GraphQL.net/license.html">License</a></li>
+            <li><a href="/GraphQL.net/release-notes.html">Release Notes</a></li>
+            
+            <li class="nav-header">Getting started</li>
+            <li><a href="/GraphQL.net/tutorial.html">Sample tutorial</a></li>
+
+            <li class="nav-header">Documentation</li>
+            <li><a href="/GraphQL.net/reference/index.html">API Reference</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <a href="http://github.com/kthompson/GraphQL.net"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"/></a>
+  </body>
+  </html>
