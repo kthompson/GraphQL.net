@@ -2,6 +2,7 @@
 
 open Xunit
 open GraphQL
+open GraphQL.AST
 open FParsec
 
 let equals expected actual  = Assert.True ((actual = expected), sprintf """
@@ -9,8 +10,7 @@ expected %+A
 but got %+A""" expected actual)
 
 let test ast str =    
-  let parser = Parser ()  
-  let result = parser.Parse str 
+  let result = Parser.parse str 
   equals ast result
 
 let docN definitions = { Document.Definitions = definitions }    

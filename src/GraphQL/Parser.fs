@@ -1,13 +1,14 @@
-﻿namespace GraphQL
+﻿[<RequireQualifiedAccess>]
+module GraphQL.Parser
 
 open FParsec
+open AST
 open System
 open System.Globalization
 
-// Modeled after https://facebook.github.io/graphql/
+type ParserOptions = {Trace: bool}
 
-[<Sealed>]
-type Parser() = 
+let parseWithOptions options query = 
     let someOrEmpty s =
         match s with
         | Some str -> str
@@ -17,11 +18,14 @@ type Parser() =
         p stream // set a breakpoint here
 
     let (<!>) (p: Parser<_,_>) label : Parser<_,_> =
-        fun stream ->
-            printfn "%A: Entering %s" stream.Position label
-            let reply = p stream
-            printfn "%A: Leaving %s (%A)" stream.Position label reply.Status
-            reply
+        if options.Trace = false then
+            p
+        else
+            fun stream ->
+                printfn "%A: Entering %s" stream.Position label
+                let reply = p stream
+                printfn "%A: Leaving %s (%A)" stream.Position label reply.Status
+                reply
 
     let pSelection, pSelectionRef = createParserForwardedToRef<_, unit>()
     let pField, pFieldRef = createParserForwardedToRef<_, unit>()
@@ -95,13 +99,13 @@ type Parser() =
 
     let ws p = p .>> pIgnored
     let wsstr s = pstring s .>> pIgnored
-//    // 2.1.7 Punctuators
-//    let pPunctuator =
-//        choice [
-//            pstring "!"; pstring "$"; pstring "("; pstring ")";
-//            pstring "..."; pstring ":"; pstring "="; pstring "@";
-//            pstring "["; pstring "]"; pstring "{"; pstring "}";
-//        ] 
+    //    // 2.1.7 Punctuators
+    //    let pPunctuator =
+    //        choice [
+    //            pstring "!"; pstring "$"; pstring "("; pstring ")";
+    //            pstring "..."; pstring ":"; pstring "="; pstring "@";
+    //            pstring "["; pstring "]"; pstring "{"; pstring "}";
+    //        ] 
         
 
     // 2.1.8 Names
@@ -208,16 +212,16 @@ type Parser() =
             pObjectValue    |>> objcast
         ] <?> "Value"
 
-//    // 2.1.5 Lexical Tokens
-//    let Token =
-//        choice [
-//            pPunctuator;
-//            pName;
-//            pIntValue;
-//            pFloatValue;
-//            pStringValue;
-//        ]
-//        
+    //    // 2.1.5 Lexical Tokens
+    //    let Token =
+    //        choice [
+    //            pPunctuator;
+    //            pName;
+    //            pIntValue;
+    //            pFloatValue;
+    //            pStringValue;
+    //        ]
+    //        
         
     // 2.2.5 Field Alias
     let pAlias =
@@ -231,6 +235,7 @@ type Parser() =
         ws pName .>> wsstr ":" .>>. pValue
         |>> fun (name, value) -> {Argument.Name = name; Value = value}
         <?> "Argument"
+        <!> "Argument"
 
     let pArguments = wsstr "(" >>.  sepByIgnored pArgument .>> wsstr ")"
 
@@ -258,14 +263,15 @@ type Parser() =
     let pFragmentSpreadTail = 
         ws pFragmentName .>>. pDirectives
         <?> "FragmentSpread"
+        <!> "FragmentSpread"
         |>> fun (name, directives) ->
                 {
                     FragmentSpread.Name = name
                     Directives = directives
                 }
-//
-//    let pFragmentSpread = 
-//        pstring "..." >>. pFragmentSpreadTail
+    //
+    //    let pFragmentSpread = 
+    //        pstring "..." >>. pFragmentSpreadTail
 
 
 
@@ -309,15 +315,16 @@ type Parser() =
 
         pipe3 (wsstr "on" >>. ws pTypeCondition) pDirectives pSelectionSet func
         <?> "InlineFragment"
+        <!> "InlineFragment"
 
-//    let pInlineFragment = 
-//        pstring "..." >>. pInlineFragmentTail
+    //    let pInlineFragment = 
+    //        pstring "..." >>. pInlineFragmentTail
 
     let pSelectionFragment =
         let fragmentTail = 
-            (pInlineFragmentTail |>> Selection.InlineFragment <!> "InlineFragment")            
+            (pInlineFragmentTail |>> Selection.InlineFragment)            
             <|>
-            (pFragmentSpreadTail |>> Selection.FragmentSpread <!> "FragmentSpread")
+            (pFragmentSpreadTail |>> Selection.FragmentSpread)
 
         wsstr "..." >>. fragmentTail
 
@@ -349,6 +356,7 @@ type Parser() =
             }
         pipe5 (opt (attempt pAlias)) (ws pName) (opt pArguments) pDirectives (opt pSelectionSet) func
         <?> "Field"
+        <!> "Field"
 
 
 
@@ -435,8 +443,8 @@ type Parser() =
             }    
 
     let gql = ws pDocument .>> eof
+    match run gql query with
+    | Success(result, _, _) -> result
+    | Failure(errorMsg, _, _) -> raise (System.FormatException(errorMsg))
 
-    member this.Parse query = 
-      match run gql query with
-      | Success(result, _, _) -> result
-      | Failure(errorMsg, _, _) -> raise (System.FormatException(errorMsg))
+let parse = parseWithOptions {Trace = false}

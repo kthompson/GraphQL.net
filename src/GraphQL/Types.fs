@@ -1,4 +1,4 @@
-﻿namespace GraphQL
+﻿module GraphQL.AST
 
 open System
 

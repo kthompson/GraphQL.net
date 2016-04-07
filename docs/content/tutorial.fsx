@@ -10,10 +10,18 @@ Introducing your project
 Say more
 
 *)
-#r "GraphQL.dll"
+#r "GraphQL/GraphQL.dll"
 open GraphQL
 
-Library.hello 0
+printfn "%A" <| Parser.parse """{  
+    uri,
+    contact {
+      phone,
+      name
+    },
+    height
+  }"""  
+
 (**
 Some more info
 *)

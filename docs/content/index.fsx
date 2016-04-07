@@ -23,13 +23,20 @@ Documentation
 Example
 -------
 
-This example demonstrates using a function defined in this sample library.
+This example demonstrates using the parser.
 
 *)
-#r "GraphQL.dll"
+#r "GraphQL/GraphQL.dll"
 open GraphQL
 
-printfn "hello = %i" <| Library.hello 0
+printfn "%A" <| Parser.parse """{  
+    uri,
+    contact {
+      phone,
+      name
+    },
+    height
+  }"""  
 
 (**
 Some more info
@@ -55,7 +62,7 @@ the project and submit pull requests. If you're adding a new public API, please 
 consider adding [samples][content] that can be turned into a documentation. You might
 also want to read the [library design notes][readme] to understand how it works.
 
-The library is available under Public Domain license, which allows modification and 
+The library is available under MIT license, which allows modification and 
 redistribution for both commercial and non-commercial purposes. For more information see the 
 [License file][license] in the GitHub repository. 
 
