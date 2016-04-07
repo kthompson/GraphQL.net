@@ -44,17 +44,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyInfo.fs" />
-    <Compile Include="Library1.fs" />
+    <Compile Include="Types.fs" />
+    <Compile Include="Parser.fs" />
     <None Include="Script.fsx" />
     <None Include="paket.template" />
     <None Include="paket.references" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\GraphQL.Parser\GraphQL.Parser.fsproj">
-      <Name>GraphQL.Parser</Name>
-      <Project>{876a3850-ad8b-4fb9-aead-0e6372bcac2f}</Project>
-      <Private>True</Private>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <MinimumVisualStudioVersion Condition="'$(MinimumVisualStudioVersion)' == ''">11</MinimumVisualStudioVersion>
