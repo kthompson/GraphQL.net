@@ -2,7 +2,7 @@ type project
 id
 	graphql-net
 title
-    GraphQL.net
+    graphql-net
 owners
     Kevin Thompson
 authors 
