@@ -47,7 +47,7 @@ let authors = [ "Kevin Thompson" ]
 let tags = "graphql facebook relay fsharp csharp"
 
 // File system information
-let solutionFile  = "GraphQL.net.sln"
+let solutionFile  = "GraphQL.sln"
 
 // Pattern specifying assemblies to be tested using NUnit
 let testAssemblies = "tests/**/bin/Release/*Tests*.dll"
@@ -121,7 +121,7 @@ Target "CopyBinaries" (fun _ ->
 // Clean build results
 
 Target "Clean" (fun _ ->
-    CleanDirs ["bin"; "temp"]
+    CleanDirs ["bin"; "temp"; "src/GraphQL/bin"; "tests/GraphQL.Tests/bin"]
 )
 
 Target "CleanDocs" (fun _ ->
