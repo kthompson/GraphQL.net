@@ -1,0 +1,27 @@
+type project
+id
+	graphql-net
+title
+    GraphQL.net
+owners
+    Kevin Thompson
+authors 
+    Kevin Thompson
+projectUrl
+    http://github.com/kthompson/GraphQL.net
+iconUrl
+    https://raw.githubusercontent.com/kthompson/GraphQL.net/master/docs/files/img/logo.png
+licenseUrl
+    http://github.com/kthompson/GraphQL.net/blob/master/LICENSE.txt
+requireLicenseAcceptance
+    false
+copyright
+    Copyright 2016
+tags
+    graphql facebook relay fsharp csharp
+summary
+    An implementation of Facebook's GraphQL for .NET and F#.
+description
+    An implementation of Facebook's GraphQL for .NET and F#.
+
+

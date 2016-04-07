@@ -20,7 +20,6 @@ type Selection =
  and Field = {Name: string; Alias: string; Directives: Directive array; Arguments: Argument array; Selections: Selection array}
  and FragmentDefinition = {Name:string; Type: string; Directives: Directive array; Selections: Selection array}
  and InlineFragment = {Type:string; Directives: Directive array; Selections: Selection array}
- 
 
 type Operation = 
     {
