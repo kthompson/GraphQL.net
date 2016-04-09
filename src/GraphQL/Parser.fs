@@ -29,7 +29,7 @@ let parseWithOptions options query =
 
     let pSelection, pSelectionRef = createParserForwardedToRef<_, unit>()
     let pField, pFieldRef = createParserForwardedToRef<_, unit>()
-    let pSelectionSet, pSelectionSetRef = createParserForwardedToRef<Selection array, unit>()
+    let pSelectionSet, pSelectionSetRef = createParserForwardedToRef<SelectionSet, unit>()
     let pType, pTypeRef = createParserForwardedToRef<VariableType, unit>()
     let pValue, pValueRef = createParserForwardedToRef<_, unit>()
 
@@ -148,7 +148,7 @@ let parseWithOptions options query =
                     s + string(digits)
 
         pIntPart .>>. opt FractionalPart .>>. opt ExponentPart
-        |>> fun ((a, b), c) -> a + (someOrEmpty b) + (someOrEmpty c)
+        |>> fun ((a, b), c) -> float(a + (someOrEmpty b) + (someOrEmpty c))
     
     // 2.2.7.3 Bool Value
     let pBooleanValue = 
@@ -188,6 +188,7 @@ let parseWithOptions options query =
     // 2.2.8 Variables
     let pVariable =
         pstring "$" >>. ws pName 
+        |>> fun (name) -> {Variable.Name = name}
         <?> "Variable"
         <!> "Variable"
 
@@ -202,14 +203,14 @@ let parseWithOptions options query =
     let objcast n = n :> Object
     do pValueRef := 
         choice [
-            pVariable       |>> objcast
-            pIntValue       |>> objcast
-            pFloatValue     |>> objcast
-            pStringValue    |>> objcast
-            pBooleanValue   |>> objcast
-            pEnumValue      |>> objcast
-            pListValue      |>> objcast
-            pObjectValue    |>> objcast
+            pVariable       |>> Variable
+            pIntValue       |>> IntValue
+            pFloatValue     |>> FloatValue
+            pStringValue    |>> StringValue
+            pBooleanValue   |>> BooleanValue
+            pEnumValue      |>> EnumValue
+            pListValue      |>> ListValue
+            pObjectValue    |>> ObjectValue
         ] <?> "Value"
 
     //    // 2.1.5 Lexical Tokens
@@ -226,6 +227,7 @@ let parseWithOptions options query =
     // 2.2.5 Field Alias
     let pAlias =
         ws pName .>> wsstr ":"
+        |>> Name
         <?> "Alias"
         <!> "Alias"
 
@@ -233,7 +235,7 @@ let parseWithOptions options query =
     // 2.2.4 Arguments
     let pArgument = 
         ws pName .>> wsstr ":" .>>. pValue
-        |>> fun (name, value) -> {Argument.Name = name; Value = value}
+        |>> fun (name, value) -> {Argument.Name = Name name; Value = value}
         <?> "Argument"
         <!> "Argument"
 
@@ -245,7 +247,7 @@ let parseWithOptions options query =
         pstring "@" >>. pName .>>. opt pArguments
         |>> fun (name, args) -> 
             {
-                Directive.Name = name;
+                Directive.Name = Name name;
                 Arguments = arrayOrEmptyArray args
             }
                 
@@ -266,7 +268,7 @@ let parseWithOptions options query =
         <!> "FragmentSpread"
         |>> fun (name, directives) ->
                 {
-                    FragmentSpread.Name = name
+                    FragmentSpread.Name = Name name
                     Directives = directives
                 }
     //
@@ -279,18 +281,18 @@ let parseWithOptions options query =
 
     let pNamedType = 
         pName 
-        |>> fun name -> {VariableType.Name = name; IsList = false; AllowsNull = true}
+        |>> fun (name) -> NamedType name
 
     let pListType = 
         between (pstring "[")  (pstring "]") pType
-        |>> fun typ -> {typ with IsList = true}
+        |>> ListType
 
     let pNonNullType = 
         choice [
             pNamedType .>> pstring "!"
             pListType .>> pstring "!"
         ]
-        |>> fun name -> {name with AllowsNull = false}
+        |>> NonNullType
 
     do pTypeRef := 
         choice [
@@ -298,6 +300,7 @@ let parseWithOptions options query =
             pListType
             pNonNullType
         ]
+
 
     // 2.2.6.1 Type Conditions
     let pTypeCondition = 
@@ -308,7 +311,7 @@ let parseWithOptions options query =
     let pInlineFragmentTail =
         let func typeCond directives selSet =
             {
-                InlineFragment.Type = typeCond
+                InlineFragment.TypeCondition = typeCond
                 Directives = directives
                 Selections = selSet
             }
@@ -339,7 +342,7 @@ let parseWithOptions options query =
 
     do pSelectionSetRef :=
         between (wsstr "{") (wsstr "}") (sepByIgnored pSelection)
-        |>> Array.ofList
+        |>> fun (selections) -> {selections = selections |> Array.ofList}
         <?> "SelectionSet"
         <!> "SelectionSet"
 
@@ -348,11 +351,11 @@ let parseWithOptions options query =
     do pFieldRef := 
         let func oalias name oargs directives oselection = 
             {
-                Field.Alias = match oalias with None -> null | Some alias -> alias
-                Name = name
+                Field.Alias = oalias
+                Name = Name name
                 Arguments = arrayOrEmptyArray oargs
                 Directives = directives 
-                Selections = match oselection with None -> Array.empty | Some array -> array
+                Selections = oselection
             }
         pipe5 (opt (attempt pAlias)) (ws pName) (opt pArguments) pDirectives (opt pSelectionSet) func
         <?> "Field"
@@ -366,10 +369,9 @@ let parseWithOptions options query =
     let pVariableDefinition = 
         let func varName varType oDefVal =
             {
-                Variable.Name = varName
+                VariableDefinition.Variable = varName
                 Type = varType
-                DefaultValue = match oDefVal with None -> null | Some s -> s
-                Value = null
+                DefaultValue = oDefVal
             }
         pipe3 (pVariable .>> wsstr ":") pType (opt pDefaultValue) func
         <?> "Variable Definition"
@@ -389,9 +391,9 @@ let parseWithOptions options query =
         pipe5 pOperationType (ws pName) (opt pVariableDefinitions) pDirectives pSelectionSet
         <| fun otype name ovars directives selection ->
             {
-                Operation.OperationType = otype
-                Name = name
-                Variables = match ovars with None -> Array.empty | Some vars -> vars
+                OperationDefinition.OperationType = otype
+                Name = Some (Name name)
+                VariableDefinitions = match ovars with None -> Array.empty | Some vars -> vars
                 Directives = directives
                 Selections = selection
             }
@@ -400,9 +402,9 @@ let parseWithOptions options query =
         pSelectionSet
         |>> fun x ->
             {
-                Operation.OperationType = Query
-                Name = null
-                Variables = Array.empty
+                OperationDefinition.OperationType = Query
+                Name = None
+                VariableDefinitions = Array.empty
                 Directives = Array.empty
                 Selections = x
             }
@@ -421,8 +423,8 @@ let parseWithOptions options query =
         pipe4 (wsstr "fragment" >>. ws pFragmentName .>> wsstr "on") (ws pTypeCondition) pDirectives pSelectionSet
         <| fun name typeCond directives selSet ->
                 {
-                    FragmentDefinition.Name = name
-                    Type = typeCond
+                    FragmentDefinition.Name = Name name
+                    TypeCondition = typeCond
                     Directives = directives
                     Selections = selSet
                 }
@@ -447,4 +449,4 @@ let parseWithOptions options query =
     | Success(result, _, _) -> result
     | Failure(errorMsg, _, _) -> raise (System.FormatException(errorMsg))
 
-let parse = parseWithOptions {Trace = false}
+let parse (x) = parseWithOptions {Trace = false} x

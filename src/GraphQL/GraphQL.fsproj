@@ -88,7 +88,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="AssemblyInfo.fs" />
-    <Compile Include="Types.fs" />
+    <Compile Include="AST.fs" />
     <Compile Include="Parser.fsi" />
     <Compile Include="Parser.fs" />
     <None Include="Script.fsx" />

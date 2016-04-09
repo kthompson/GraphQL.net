@@ -18,15 +18,15 @@ let doc1 definition = docN [| definition |]
 
 let namedQueryVS name variables selections = 
     {
-        Operation.OperationType = Query; 
-        Name = name 
+        OperationDefinition.OperationType = Query; 
+        Name = name
         Directives = Array.empty;
-        Variables = variables;
-        Selections = selections;
+        VariableDefinitions = variables;
+        Selections = {selections = selections};
     } |> Operation
 
 let namedQueryV1S1 name variable selection  = 
-    namedQueryVS name [| variable |] [| selection |]
+    namedQueryVS (Some name) [| variable |] [| selection |]
 
 let namedQueryS name = 
     namedQueryVS name Array.empty 
@@ -34,46 +34,54 @@ let namedQueryS name =
 let namedQueryS1 name selection = 
     namedQueryS name [| selection |]
 
-let queryS = namedQueryS null
-let query1 = namedQueryS1 null
+let queryS = namedQueryS None
+let query1 = namedQueryS1 None
 
 let arg name value =
-    {Argument.Name = name; Value = value}
+    {Argument.Name = Name name; Value = value}
 
 let fieldNA name arguments selections = 
     {
-        Field.Name = name;
-        Alias = null;
+        Field.Name = Name name;
+        Alias = None;
         Directives = Array.empty;
         Arguments = arguments;
         Selections = selections;
     } |> Field
 
+let selectionSet selections =
+    {selections = selections }
+
+let someSelectionSet selections =
+    {selections = selections }
+    |> Some
+
 let fieldNA1 name arguments selection =
-    fieldNA name arguments [| selection |]
+    fieldNA name arguments ([| selection |] |> someSelectionSet)
+
 let fieldA name arguments =
-    fieldNA name arguments Array.empty
+    fieldNA name arguments None
 
 let fieldN name = 
     fieldNA name Array.empty
 
 let field1 name selection =
-    fieldN name [| selection |]
+    fieldN name (Some {selections = [| selection |]})
 
 let field name =
-    fieldN name Array.empty
+    fieldN name None
 
 let withAlias alias x =
     match x with
-    | Field f -> Field {f with Alias = alias}
+    | Field f -> Field {f with Alias = Some (Name alias)}
     | _ -> x
 
 let frag name ``type`` selections = 
     {
-        FragmentDefinition.Name = name
-        Type = ``type``
+        FragmentDefinition.Name = Name name
+        TypeCondition = ``type``
         Directives = Array.empty
-        Selections = selections
+        Selections = {selections = selections}
     }
     |> Fragment
 
@@ -82,9 +90,9 @@ let frag1 name ``type`` selection =
 
 let ifrag ``type`` selections = 
     {
-        InlineFragment.Type = ``type``
+        InlineFragment.TypeCondition = ``type``
         Directives = Array.empty
-        Selections = selections
+        Selections = {selections = selections}
     }
     |> Selection.InlineFragment
 
@@ -97,26 +105,21 @@ let spreadN name directives =
     |> Selection.FragmentSpread
 
 let spread1 name directive =
-    spreadN name [| directive |]
+    spreadN (Name name) [| directive |]
 
 let spread name =
-    spreadN name Array.empty
+    spreadN (Name name) Array.empty
 
-let varType list nullable name =
-    {Name = name; IsList = list; AllowsNull = nullable}
-
-let valueType = varType false false
-let refType = varType false true
-let listType = varType true false
-
-let var vtype defaultValue value name = 
-    {Name=name; Type= vtype; DefaultValue= defaultValue; Value = value}
+let var vtype defaultValue name = 
+    {Variable=name; Type= vtype; DefaultValue= defaultValue}
 
 let directive name arguments =
     {Directive.Name = name; Arguments = arguments}
 
 let directive1 name argument =
-    directive name [| argument |]
+    directive (Name name) [| argument |]
+
+let someName = Name >> Some
 
 [<Fact>]
 let ``parser should parse empty query`` () =
@@ -193,6 +196,7 @@ let ``parser should parse nested field`` () =
   let expected = 
     [|"phone"; "name"|]
     |> Array.map field
+    |> someSelectionSet
     |> fieldN "contact"
     |> query1
     |> doc1     
@@ -209,6 +213,7 @@ let ``parser should parse nested field no commas`` () =
   let expected = 
     [|"phone"; "name"|]
     |> Array.map field
+    |> someSelectionSet
     |> fieldN "contact"
     |> query1
     |> doc1     
@@ -225,6 +230,7 @@ let ``parser should parse nested fields`` () =
   let contact = 
     [|"phone"; "name"|]
     |> Array.map field
+    |> someSelectionSet
     |> fieldN "contact"
 
   let expected =
@@ -246,6 +252,7 @@ let ``parser should parse nested fields no commas`` () =
   let contact = 
     [|"phone"; "name"|]
     |> Array.map field
+    |> someSelectionSet
     |> fieldN "contact"
 
   let expected =
@@ -271,11 +278,12 @@ let ``parser should parse multi level nested fields`` () =
    
   let author =
     [|field "name"; profile|]
+    |> someSelectionSet
     |> fieldN "author"
 
   let expected =        
     [|author; field "text"|]
-    |> namedQueryS "Story"
+    |> namedQueryS ("Story" |> someName)
     |> doc1
 
   test expected """query Story {
@@ -289,14 +297,16 @@ let ``parser should parse multi level nested fields`` () =
       }""" 
 
 [<Fact>]
-let ``parser should parse GraphQL`` () =
+let ``parser should parse GraphQL with values`` () =
   let profile =
     [| field "uri"; field "width"; field "height"; |]
-    |> fieldNA "profilePicture" [| arg "size" 50 |]
+    |> someSelectionSet
+    |> fieldNA "profilePicture" [| arg "size" (IntValue 50) |]
   
   let user =
     [| field "id"; field "name"; field "isViewerFriend"; profile |]
-    |> fieldNA "user" [| arg "id" 3500401 |]
+    |> someSelectionSet
+    |> fieldNA "user" [| arg "id" (IntValue 3500401) |]
 
   let expected =
     user
@@ -320,7 +330,8 @@ let ``parser should parse GraphQL`` () =
 let ``parser should parse query with arguments`` () = 
   let expected =
     [| field "name"; |]
-    |> fieldNA "user" [| arg "id" 4 |]
+    |> someSelectionSet
+    |> fieldNA "user" [| arg "id" (IntValue 4) |]
     |> query1
     |> doc1
 
@@ -335,8 +346,9 @@ let ``parser should parse query with arguments`` () =
 [<Fact>]
 let ``parser should parse query with arguments 1`` () = 
   let expected =
-    [| field "id"; field "name"; fieldA "profilePic" [| arg "size" 100 |] |]
-    |> fieldNA "user" [| arg "id" 4 |]
+    [| field "id"; field "name"; fieldA "profilePic" [| arg "size" (IntValue 100) |] |]
+    |> someSelectionSet
+    |> fieldNA "user" [| arg "id" (IntValue 4) |]
     |> query1
     |> doc1
 
@@ -351,12 +363,13 @@ let ``parser should parse query with arguments 1`` () =
 [<Fact>]
 let ``parser should parse query with multiple arguments`` () = 
   let profilePic =
-    [| arg "width" 100; arg "height" 50 |]
+    [| arg "width" (IntValue 100); arg "height" (IntValue 50) |]
     |> fieldA "profilePic"
 
   let expected =
     [| field "id"; field "name"; profilePic |]
-    |> fieldNA "user" [| arg "id" 4 |]
+    |> someSelectionSet
+    |> fieldNA "user" [| arg "id" (IntValue 4) |]
     |> query1
     |> doc1
 
@@ -376,8 +389,9 @@ let ``parser should parse query with field alias`` () =
     |> withAlias alias
 
   let expected =
-    [| field "id"; field "name"; profilePic "smallPic" 64; profilePic "bigPic" 1024 |]
-    |> fieldNA "user" [| arg "id" 4 |]
+    [| field "id"; field "name"; profilePic "smallPic" (IntValue 64); profilePic "bigPic" (IntValue 1024) |]
+    |> someSelectionSet
+    |> fieldNA "user" [| arg "id" (IntValue 4) |]
     |> query1
     |> doc1
 
@@ -395,7 +409,8 @@ let ``parser should parse query with field alias`` () =
 let ``parser should parse query with top level field alias`` () = 
   let expected =
     [| field "id"; field "name"; |]
-    |> fieldNA "user" [| arg "id" 4 |]
+    |> someSelectionSet
+    |> fieldNA "user" [| arg "id" (IntValue 4) |]
     |> withAlias "zuck"
     |> query1
     |> doc1
@@ -410,13 +425,15 @@ let ``parser should parse query with top level field alias`` () =
 [<Fact>]
 let ``parser should parse query without fragments`` () = 
   let friends name =
-    [| field "id"; field "name"; fieldA "profilePic" [| arg "size" 50 |] |]
-    |> fieldNA name [| arg "first" 10 |]
+    [| field "id"; field "name"; fieldA "profilePic" [| arg "size" (IntValue 50) |] |]
+    |> someSelectionSet
+    |> fieldNA name [| arg "first" (IntValue 10) |]
     
   let expected =
     [| friends "friends"; friends "mutualFriends"; |]
-    |> fieldNA "user" [| arg "id" 4 |]
-    |> namedQueryS1 "noFragments"
+    |> someSelectionSet
+    |> fieldNA "user" [| arg "id" (IntValue 4) |]
+    |> namedQueryS1 ("noFragments" |> someName)
     |> doc1
 
   test expected  """query noFragments {
@@ -438,16 +455,17 @@ let ``parser should parse query without fragments`` () =
 let ``parser should parse query with fragments `` () = 
   let friends name =
     spread "friendFields"
-    |> fieldNA1 name [| arg "first" 10 |]
+    |> fieldNA1 name [| arg "first" (IntValue 10) |]
     
   let withFragments =
     [| friends "friends"; friends "mutualFriends"; |]
-    |> fieldNA "user" [| arg "id" 4 |]
-    |> namedQueryS1 "withFragments"
+    |> someSelectionSet
+    |> fieldNA "user" [| arg "id" (IntValue 4) |]
+    |> namedQueryS1 ("withFragments" |> someName)
     
 
   let friendFields =
-    [| field "id"; field "name"; fieldA "profilePic" [| arg "size" 50 |] |]
+    [| field "id"; field "name"; fieldA "profilePic" [| arg "size" (IntValue 50) |] |]
     |> frag "friendFields" "User"
 
   let expected = 
@@ -476,15 +494,16 @@ let ``parser should parse query with fragments `` () =
 let ``parser should parse query with nested fragments `` () = 
   let friends name =
     spread "friendFields"
-    |> fieldNA1 name [| arg "first" 10 |]
+    |> fieldNA1 name [| arg "first" (IntValue 10) |]
     
   let withFragments =
     [| friends "friends"; friends "mutualFriends"; |]
-    |> fieldNA "user" [| arg "id" 4 |]
-    |> namedQueryS1 "withNestedFragments"
+    |> someSelectionSet
+    |> fieldNA "user" [| arg "id" (IntValue 4) |]
+    |> namedQueryS1 ("withNestedFragments" |> someName)
   
   let standardProfilePic =
-    fieldA "profilePic" [| arg "size" 50 |]
+    fieldA "profilePic" [| arg "size" (IntValue 50) |]
     |> frag1 "standardProfilePic" "User"
 
   let friendFields =
@@ -533,8 +552,9 @@ let ``parser should parse query with type conditions`` () =
 
   let fragmentTyping =
     [| field "handle"; spread "userFragment"; spread "pageFragment"; |]
-    |> fieldNA "profiles" [| arg "handles" [|"zuck"; "cocacola"|] |]
-    |> namedQueryS1 "FragmentTyping"    
+    |> someSelectionSet
+    |> fieldNA "profiles" [| arg "handles" (ListValue [| StringValue "zuck"; StringValue "cocacola"|]) |]
+    |> namedQueryS1 ("FragmentTyping" |> someName)
 
   let expected =
     [| fragmentTyping; userFragment; pageFragment |]
@@ -575,8 +595,9 @@ let ``parser should parse query with inline fragments`` () =
 
   let inlineFragmentTyping =
     [| field "handle"; userFragment; pageFragment; |]
-    |> fieldNA "profiles" [| arg "handles" [|"zuck"; "cocacola"|] |]
-    |> namedQueryS1 "inlineFragmentTyping"    
+    |> someSelectionSet
+    |> fieldNA "profiles" [| arg "handles" (ListValue [| StringValue "zuck"; StringValue "cocacola"|]) |]
+    |> namedQueryS1 ("inlineFragmentTyping" |> someName)
 
   let expected =
     inlineFragmentTyping
@@ -605,13 +626,16 @@ let ``parser should parse query with fragment directives`` () =
     |> field1 "me"
     |> frag1 "maybeFragment" "Query"
 
-  let v =  var (refType "Boolean") null null "condition"
+  let v = 
+    var (VariableType.NamedType "Boolean") None {Variable.Name = "condition"}
 
   let hasConditionalFragment =
-    arg "if" "condition"
+    {Variable.Name = "condition"}
+    |> Variable
+    |> arg "if"
     |> directive1 "include"
     |> spread1 "maybeFragment"
-    |> namedQueryV1S1 "hasConditionalFragment" v
+    |> namedQueryV1S1 (Name "hasConditionalFragment") v
     
   let expected =
     [| hasConditionalFragment; maybeFragment |]
