@@ -17,3 +17,4 @@ group Test
 
   nuget xunit ~> 2
   nuget xunit.runner.console
+  nuget FsUnit.xUnit

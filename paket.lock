@@ -33,6 +33,10 @@ FRAMEWORK: NET461
 NUGET
   remote: https://www.nuget.org/api/v2
   specs:
+    FSharp.Core (4.0.0.1)
+    FsUnit.xUnit (1.4.1)
+      FSharp.Core (>= 3.1.2.5)
+      xunit (2.1)
     xunit (2.1)
       xunit.assert (2.1)
       xunit.core (2.1)

@@ -2,3 +2,4 @@
 group Test
 xunit
 xunit.runner.console
+FsUnit.xUnit

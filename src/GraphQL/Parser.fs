@@ -1,5 +1,4 @@
-﻿[<RequireQualifiedAccess>]
-module GraphQL.Parser
+﻿module GraphQL.Parser
 
 open FParsec
 open AST
@@ -18,13 +17,16 @@ let parseWithOptions options query =
         p stream // set a breakpoint here
 
     let (<!>) (p: Parser<_,_>) label : Parser<_,_> =
+        let pos (s : CharStream<'a>) =
+            sprintf "%A:" s.Position
+
         if options.Trace = false then
             p
         else
             fun stream ->
-                printfn "%A: Entering %s" stream.Position label
+                printfn "%-18s Enter %s" (pos stream) label
                 let reply = p stream
-                printfn "%A: Leaving %s (%A)" stream.Position label reply.Status
+                printfn "%-18s Leave %s (%A)" (pos stream) label reply.Status
                 reply
 
     let pSelection, pSelectionRef = createParserForwardedToRef<_, unit>()
@@ -131,7 +133,7 @@ let parseWithOptions options query =
 
     let pIntValue = 
         pIntPart 
-        |>> fun x -> Int32.Parse(x)
+        |>> fun x -> Int64.Parse(x)
 
     // 2.2.7.2 Float Value
     let pFloatValue = 
@@ -188,7 +190,6 @@ let parseWithOptions options query =
     // 2.2.8 Variables
     let pVariable =
         pstring "$" >>. ws pName 
-        |>> fun (name) -> {Variable.Name = name}
         <?> "Variable"
         <!> "Variable"
 
@@ -369,7 +370,7 @@ let parseWithOptions options query =
     let pVariableDefinition = 
         let func varName varType oDefVal =
             {
-                VariableDefinition.Variable = varName
+                Variable.Name = varName
                 Type = varType
                 DefaultValue = oDefVal
             }
@@ -389,25 +390,29 @@ let parseWithOptions options query =
 
     let pOperationDefinition1 =
         pipe5 pOperationType (ws pName) (opt pVariableDefinitions) pDirectives pSelectionSet
-        <| fun otype name ovars directives selection ->
+        <| (fun otype name ovars directives selection ->
             {
-                OperationDefinition.OperationType = otype
+                Operation.OperationType = otype
                 Name = Some (Name name)
-                VariableDefinitions = match ovars with None -> Array.empty | Some vars -> vars
+                Variables = match ovars with None -> Array.empty | Some vars -> vars
                 Directives = directives
                 Selections = selection
-            }
+            })
+        <?> "OperationDefinition1"
+        <!> "OperationDefinition1"
 
     let pOperationDefinition2 =
         pSelectionSet
-        |>> fun x ->
+        |>> (fun x ->
             {
-                OperationDefinition.OperationType = Query
+                Operation.OperationType = Query
                 Name = None
-                VariableDefinitions = Array.empty
+                Variables = Array.empty
                 Directives = Array.empty
                 Selections = x
-            }
+            })
+        <?> "OperationDefinition2"
+        <!> "OperationDefinition2"
         
 
     let pOperationDefinition = 
@@ -423,7 +428,7 @@ let parseWithOptions options query =
         pipe4 (wsstr "fragment" >>. ws pFragmentName .>> wsstr "on") (ws pTypeCondition) pDirectives pSelectionSet
         <| fun name typeCond directives selSet ->
                 {
-                    FragmentDefinition.Name = Name name
+                    Fragment.Name = name
                     TypeCondition = typeCond
                     Directives = directives
                     Selections = selSet
@@ -444,7 +449,7 @@ let parseWithOptions options query =
                 Document.Definitions = (x |> Array.ofList)
             }    
 
-    let gql = ws pDocument .>> eof
+    let gql = pIgnored >>. pDocument .>> eof
     match run gql query with
     | Success(result, _, _) -> result
     | Failure(errorMsg, _, _) -> raise (System.FormatException(errorMsg))

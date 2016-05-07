@@ -5,18 +5,15 @@ open System
 type Name =
     | Name of string
 
-type Variable = {Name: string}
-
 type Value = 
-    | Variable of Variable
-    | IntValue of int
+    | Variable of string
+    | IntValue of int64
     | FloatValue of float
     | StringValue of string
     | BooleanValue of bool
     | EnumValue of string // TODO?
     | ListValue of Value array
-    | ObjectValue of ObjectField
-and ObjectField = {Name: Name; Value: Value}
+    | ObjectValue of Name * Value
 
 type Argument = {Name:Name; Value: Value}
 type Directive = {Name:Name; Arguments: Argument array}
@@ -40,8 +37,8 @@ type Selection =
     Arguments: Argument array; 
     Directives: Directive array; 
     Selections: SelectionSet option}
- and FragmentDefinition = {
-    Name:Name; 
+ and Fragment = {
+    Name: string; 
     TypeCondition: NamedType; 
     Directives: Directive array; 
     Selections: SelectionSet}
@@ -51,21 +48,21 @@ type Selection =
     Selections: SelectionSet}
 
 
-type VariableDefinition = {Variable:Variable; Type: VariableType; DefaultValue: Value option;}
+type Variable = {Name:string; Type: VariableType; DefaultValue: Value option}
 
 type OperationType = Query | Mutation | Subscription
 
-type OperationDefinition = 
+type Operation = 
     {
         OperationType: OperationType; 
         Name: Name option; 
-        VariableDefinitions: VariableDefinition array;
+        Variables: Variable array;
         Directives: Directive array;
         Selections: SelectionSet
     }
 
 type Definition = 
-    | Operation of OperationDefinition
-    | Fragment of FragmentDefinition
+    | Operation of Operation
+    | Fragment of Fragment
 
 type Document = {Definitions: Definition array}

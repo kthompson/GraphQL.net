@@ -2,7 +2,7 @@
 
 open AST
 
-type ParserOptions
+type ParserOptions = {Trace: bool}
 
 /// GraphQL parser that takes a string and converts it to 
 /// a <see cref="AST.Document"/> object
