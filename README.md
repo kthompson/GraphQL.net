@@ -12,7 +12,7 @@ In order to build GraphQL.net run
     
 Read the [Getting started tutorial](http://kthompson.github.io/GraphQL/index.html#Getting-started) to learn more.
 
-Documentation: http://kthompson.github.io/GraphQL
+Documentation: http://kthompson.github.io/GraphQL.net
 
 ## Build Status
 
