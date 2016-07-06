@@ -10,7 +10,7 @@ In order to build GraphQL.net run
     > build.cmd // on windows    
     $ ./build.sh  // on unix
     
-Read the [Getting started tutorial](http://kthompson.github.io/GraphQL/index.html#Getting-started) to learn more.
+Read the [Getting started tutorial](http://kthompson.github.io/GraphQL.net/index.html#Getting-started) to learn more.
 
 Documentation: http://kthompson.github.io/GraphQL.net
 
